@@ -1,17 +1,15 @@
+import 'package:chatup/chat/pages/newUserStart/register_holder.dart';
 import 'package:flutter/material.dart';
 import 'package:chatup/background_ui/expanded_ui.dart';
 import 'package:chatup/background_ui/main_page.dart';
 
 
-
-import 'package:chatup/background_ui/notifiers.dart';
 import 'package:chatup/libV2/newdata/data_helpa.dart';
 import 'package:chatup/libV2/newdata/registry.dart';
-import 'package:chatup/main.dart';
-import 'package:chatup/settings.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
-import 'custom_widgets.dart';
+
 import 'package:chatup/libV2/newdata/db_data_translation.dart';
 
 
@@ -68,7 +66,7 @@ class _WelcomePageState extends State<WelcomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 32.0),
-              Text(
+              const Text(
                 'Login with email and password',
                 style: TextStyle(
                   fontSize: 20.0,
@@ -144,15 +142,21 @@ class _WelcomePageState extends State<WelcomePage> {
                   Navigator.push(//! THIS goto 'X' page
                     
                     context,
-                  //MaterialPageRoute(builder: (context) => HomePageZ()), 
-                  MaterialPageRoute(builder: (context) => SettingsPage()), 
+                    //MaterialPageRoute(builder: (context) => HomePageZ()), 
+                    MaterialPageRoute(builder: (context) => WillPopScope(
+                      // this should mean that they cant go back a page to make another account  
+                      onWillPop: () => Future.value(false), 
+                      //child: RegisterPagez(isRegistering:true)
+                      child: SignupPage()
+                      )
+                    )
                   );
                 },
                 child: const Text('Create Account'),
               ),
               const SizedBox(height: 32.0),
               //! row of authocation buttons (google, apple, etc)
-              Row(
+              /* Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget> [
                   CustomCircularButton(
@@ -160,7 +164,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     imagePath: 'assets/icons/google-icon-logo-svgrepo-com.svg', 
                     press: () {},
                   ),
-                  SizedBox(width: 10), // add spacing between the buttons
+                  const SizedBox(width: 10),// add spacing between the buttons
                   CustomCircularButton(
                     color: Colors.white,
                     imagePath: 'assets/icons/google-icon-logo-svgrepo-com.svg',
@@ -168,7 +172,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
                 
-              ),
+              ), */
             ],
           ),
         ),
