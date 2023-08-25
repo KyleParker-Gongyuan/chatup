@@ -7,6 +7,7 @@
 
 import 'package:chatup/chat/pages/all_users_list.dart';
 import 'package:chatup/chat/pages/contacts_list.dart';
+import 'package:chatup/chat/pages/home_page.dart';
 import 'package:chatup/libV2/newdata/data_helpa.dart' as db;
 import 'package:chatup/libV2/newdata/registry.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -129,8 +130,9 @@ class _MainPageState extends State<MainPage> {
   }
   late final tabs = [
     //! vv(iside of this we need to somehow to get data to the big sqlite database)vv
-    Container(child: ContactsPage(myUuid: widget.myUuid)), //Chat (get messages)
-    Container(child: FindUsersPage(myUuid: widget.myUuid)), //new People (get users) (if getting a signal from supabase(server) )
+    ContactsPage(myUuid: widget.myUuid), //Chat (get messages)
+    FindUsersPage(myUuid: widget.myUuid), //new People (get users) (if getting a signal from supabase(server) )
+    const MyHomePage(), //new People (get users) (if getting a signal from supabase(server) )
     /* Container(child: const MiniGameHandler()), //games V1 (get upates?)
     Container(child: BookStore()), */ //Books (books)
     //Container(child: const MyHomePage()),
@@ -158,7 +160,7 @@ class _MainPageState extends State<MainPage> {
 
   void _onRefresh() async{
     // monitor network fetch
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
     _refreshController.refreshCompleted();
   }
@@ -192,7 +194,7 @@ class _MainPageState extends State<MainPage> {
         onRefresh: _onRefresh,
         onLoading: _onLoading,
         child:  */PageView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index){
             final tab = tabs[index];
             return tab;
@@ -270,33 +272,11 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: Colors.purple,
 
           ),
-          /* BottomNavigationBarItem(
-            icon: Icon(Icons.games_outlined),
-            label: "Games V1",
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "profile",
             backgroundColor: Colors.red,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book_online),
-            label: "Games V2(database atm)",
-            
-          ), */
-          
-          /*BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: "Books",
-            backgroundColor: Colors.black,
-
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.house),
-            label: "Robot/IRL",
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.apps),
-            label: "games or bookstore alt",
-            backgroundColor: Colors.teal,
-          ), */
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
