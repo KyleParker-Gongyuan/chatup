@@ -76,7 +76,7 @@ class _ChatDetailPageAppBar extends State<ChatDetailPageAppBar> {
                   children: <Widget>[
                   //TODO: we need to get the specifc INFO(name/status) of this user
                     Text(widget.userName,style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600),), // get the name
-                    SizedBox(height: 6,),
+                    const SizedBox(height: 6,),
                     //! we want to get if they want to be know that they are online
                     Text(widget.isOnline ? "online":"offline", style: TextStyle(color: widget.isOnline ? Colors.green : Colors.grey ,fontSize: 12),), //get the status
                   ],
@@ -122,7 +122,7 @@ class _ChatDetailPageAppBar extends State<ChatDetailPageAppBar> {
                         color: Colors.white,
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 2),
+                        margin: const EdgeInsets.only(top: 2),
                         child: Text(
                           item.title,
                           style: const TextStyle(color: Colors.white, fontSize: 12),

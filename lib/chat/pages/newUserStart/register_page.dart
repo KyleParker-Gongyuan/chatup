@@ -3,12 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 
-import 'package:country_list_picker/country_list_picker.dart';
-
-
-
-import 'dart:math' as math;
-
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 
@@ -71,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage>{
     return Scaffold(
       
       body:  Container(
-          padding: EdgeInsets.symmetric(horizontal: 44),
+          padding: const EdgeInsets.symmetric(horizontal: 44),
           //height: MediaQuery.of(context).size.height-150,
           child: Align(alignment: Alignment.center,
           child: Form(

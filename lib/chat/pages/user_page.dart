@@ -1,5 +1,4 @@
 
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
@@ -113,7 +112,7 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
           ),
           buildProfilesbio(),
           Spacer(), // this is as it says its a spacer (it space between from last widget(top) and next widget(bottom))
-          followOrMessage(), // do we even want to follow the user?????(why would we????)
+          messageUser(), // do we even want to follow the user?????(why would we????)
 
         ],
       ),
@@ -218,7 +217,7 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
       border: Border.all(
         
       ),
-      borderRadius: BorderRadius.all(Radius.circular(20))
+      borderRadius: const BorderRadius.all(Radius.circular(20))
     ),
     child: Row(
       children: [
@@ -227,29 +226,12 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
       ],
     ),
   );
-  // do we even want to follow the user?????(why would we????)
-  Widget followOrMessage() => Container( // do we even want to follow the user?????(why would we????)
+  
+  Widget messageUser() => Container( 
     color: Colors.green,
     child: Align(
       alignment: Alignment.bottomCenter,
-      //child: Row(children: [
 
-        /* ElevatedButton.icon( //? i dont think we are gonna have the follow feat or the social media type beat system
-          icon: Icon(
-            Icons.add_circle_outline
-          ),
-          onPressed: () {
-            Navigator.push(//! THIS goto 'X' page
-                    context,
-                  MaterialPageRoute(builder: (context) => 
-                    UserChatRoom(userName: widget.userName, userAvatar: widget.userAvatar, userId: widget.userId,
-                      isOnline: widget.isOnline, isKnownUser: widget.isKnownUser, myUuid: widget.myUuid)
-                  ),
-                  );
-            return ;
-          },
-          label: const Text('Message this user')
-        ) */
         child: ElevatedButton.icon( 
           icon: const Icon(
             Icons.message
@@ -266,7 +248,7 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
           },
           label: const Text('Message this user')
         )
-      //],)
+      
     )
 
 
@@ -329,7 +311,7 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
   Widget buildProfilesbio() => Container(
     padding: EdgeInsets.all(10),
     child: Column(children: [
-      Row(children: [ //we could do it as another carousel (bio, games(user has played), pics, etc etc)
+      Row(children: [
             Container(
               
               child: Text("BIO:", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
@@ -358,6 +340,6 @@ class _UserProfile extends State<UserProfile> { //* for selecting a user to chat
 class PointsType{ // probably want the senders image if we do groups
   String text;
   IconData icon;
-  int points; // maybe make htis a double?
+  int points; // maybe make this a double?
   PointsType({required this.text, required this.icon, required this.points });
 }

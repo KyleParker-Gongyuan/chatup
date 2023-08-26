@@ -134,7 +134,7 @@ class _SignupPageState extends State<SignupPage> {
         _currentPageIndex++;
       });
       _pageController.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -146,7 +146,7 @@ class _SignupPageState extends State<SignupPage> {
         _currentPageIndex--;
       });
       _pageController.previousPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }

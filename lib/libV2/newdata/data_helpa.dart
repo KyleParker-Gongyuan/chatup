@@ -268,17 +268,17 @@ class DatabaseHelper{
   Future<void> addUserToLocalDb(String newUsersContactId) async {
     var thisUserInfo;
 
-    await getAllUsers().then((value) async {
-      final lastuser = value.length;
+    await getAllUsers().then((users) async {
+      final lastuser = users.length;
       
-      await Supabase.instance.client.from('profiles').select().eq('user_id', newUsersContactId).then((value) async {
+      await Supabase.instance.client.from('profiles').select().eq('user_id', '$newUsersContactId').then((value) async {
 
         print("user from server: ${value}");
         
         var thisuser = value[0];
         var created_at = DateTime.parse(thisuser['created_at']);
         var last_online = DateTime.parse(thisuser['last_online']);
-        
+      
         //what is the best way of doing this?
 
         //Uint8List avatarImage = await Supabase.instance.client.storage.from("avatars").download(thisuser['avatar_url']);
@@ -295,6 +295,8 @@ class DatabaseHelper{
             print("some error: $error");
           }
         }
+        //! PLEASE OFFEND ME 我狠jaydid人， 是ovius  我们可以(有) buy 冰激凌在冰激凌餐厅, what else are we gonna do!?!??!
+        // im a jayded person
 
         thisUserInfo = BigUser(
           id: lastuser, serverId: thisuser['user_id'],username: thisuser['username'],imageAvatar: avatarImage,
