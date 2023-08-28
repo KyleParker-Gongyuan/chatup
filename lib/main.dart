@@ -25,9 +25,11 @@ Future<void> main() async {
 //  prefs.setString('loginToken', value)
   
 
+  const supabaseUrl = '';
+  const supabaseAnnonKey = '';
   //check if is a user locally {goto mainpage} else login/signup
   
-  await Supabase.initialize(url: 'https://teszdgkwtuwbossvhwpy.supabase.co', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlc3pkZ2t3dHV3Ym9zc3Zod3B5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg4OTIxMDcsImV4cCI6MjAwNDQ2ODEwN30.9qJPdJEAhsBlVp-89xKDWjnDho86VNrdLa0jN6a3Wuo',
+  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnnonKey,
     realtimeClientOptions: const RealtimeClientOptions(eventsPerSecond: 15), 
   );
   final SharedPreferences prefs = await SharedPreferences.getInstance();
