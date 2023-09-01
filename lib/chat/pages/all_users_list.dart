@@ -188,22 +188,7 @@ class _FindUsersPageState extends State<FindUsersPage> {
                               getPublicUrl(user['avatar_url']);
 
                           }
-                          /* Supabase.instance.client.channel('test').on( // test goes to all clients (users)
-                            RealtimeListenTypes.postgresChanges,
-                            ChannelFilter(event: 'sync'), // we need to get info form user(how to?)
-                            (payload, [ref]) {
-                              
-                              print("wtf is this data? ${payload['new']}");
-                              
-                            },
-                          ).subscribe(); */
-                          /* Supabase.instance.client.channel('*').on(
-                            RealtimeListenTypes.postgresChanges,
-                            ChannelFilter(event: '*', schema: '*'),
-                            (payload, [ref]) {
-                              print('Change received: ${payload.toString()}');
-                            },
-                          ).subscribe(); */
+                          
                           Supabase.instance.client.channel('public:profiles:user_id=eq.user[user_id]').on(
                               RealtimeListenTypes.postgresChanges,
                               ChannelFilter(
